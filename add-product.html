@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Product – LocalHarvest</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="add-product">
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand"><a href="farmer-dashboard.html"><span class="brand-icon">🌾</span><span
+            class="brand-name">LocalHarvest</span></a></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="farmer-dashboard.html">← Back to Dashboard</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="auth-page" style="align-items:flex-start;padding-top:6rem;">
+    <div class="auth-card" style="max-width:580px;">
+      <div class="auth-header">
+        <span style="font-size:2.5rem;display:block;margin-bottom:0.5rem;">🌱</span>
+        <h1>List Your Produce</h1>
+        <p>Fill in the details below to add your product</p>
+      </div>
+
+      <!-- Image upload preview -->
+      <div style="text-align:center;margin-bottom:1.5rem;">
+        <div id="imgPreview"
+          style="width:140px;height:140px;background:var(--green-pale);border-radius:var(--radius-lg);margin:0 auto 0.75rem;display:flex;align-items:center;justify-content:center;font-size:4rem;border:2px dashed var(--green-light);cursor:pointer;overflow:hidden;background-size:cover;background-position:center;"
+          onclick="document.getElementById('imgUpload').click()">
+          📷
+        </div>
+        <label for="imgUpload" style="font-size:0.85rem;color:var(--green-med);font-weight:600;cursor:pointer;">
+          <i class="fas fa-camera"></i> Tap to upload photo
+        </label>
+        <input type="file" id="imgUpload" accept="image/*" style="display:none;">
+      </div>
+
+      <form id="addProductForm" novalidate>
+        <div class="form-group">
+          <label for="productName">Product Name <span style="color:#e74c3c;">*</span></label>
+          <input type="text" id="productName" class="form-control" placeholder="e.g. Fresh Tomatoes, Sweet Corn">
+          <div class="form-error" id="productNameError">Product name is required.</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div class="form-group">
+            <label for="productCategory">Category <span style="color:#e74c3c;">*</span></label>
+            <select id="productCategory" class="form-control">
+              <option value="">Select category</option>
+              <option value="vegetables">🥬 Vegetables</option>
+              <option value="fruits">🍎 Fruits</option>
+              <option value="grains">🌾 Grains</option>
+              <option value="herbs">🌿 Herbs</option>
+            </select>
+            <div class="form-error" id="productCategoryError">Please select a category.</div>
+          </div>
+          <div class="form-group">
+            <label for="productUnit">Unit / Per <span style="color:#e74c3c;">*</span></label>
+            <select id="productUnit" class="form-control">
+              <option value="">Select unit</option>
+              <option value="kg">kg</option>
+              <option value="bundle">bundle</option>
+              <option value="piece">piece</option>
+              <option value="tray">tray</option>
+              <option value="sack">sack</option>
+              <option value="liter">liter</option>
+            </select>
+            <div class="form-error" id="productUnitError">Please select a unit.</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div class="form-group">
+            <label for="productPrice">Price (₱) <span style="color:#e74c3c;">*</span></label>
+            <input type="number" id="productPrice" class="form-control" placeholder="e.g. 45" min="1">
+            <div class="form-error" id="productPriceError">Price is required.</div>
+          </div>
+          <div class="form-group">
+            <label for="productQty">Available Quantity <span style="color:#e74c3c;">*</span></label>
+            <input type="number" id="productQty" class="form-control" placeholder="e.g. 50" min="1">
+            <div class="form-error" id="productQtyError">Quantity is required.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="productDesc">Description (Optional)</label>
+          <textarea id="productDesc" class="form-control" rows="3"
+            placeholder="Describe your product, how it's grown, freshness, etc." style="resize:vertical;"></textarea>
+        </div>
+
+        <!-- Preview card -->
+        <div id="previewCard"
+          style="background:var(--cream);border-radius:var(--radius);padding:1rem;margin-bottom:1.25rem;display:none;">
+          <p style="font-size:0.8rem;font-weight:600;color:var(--text-light);margin-bottom:0.5rem;">PREVIEW</p>
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <div id="previewEmoji"
+              style="font-size:2rem;width:50px;height:50px;background:var(--green-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+            </div>
+            <div>
+              <div id="previewName" style="font-family:'Raleway',sans-serif;font-weight:700;color:var(--green-dark);">
+              </div>
+              <div id="previewPrice" style="color:var(--accent-dark);font-weight:600;font-size:0.95rem;"></div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-green btn-block">
+          <i class="fas fa-check-circle"></i> List My Product
+        </button>
+        <a href="farmer-dashboard.html" class="btn btn-secondary btn-block"
+          style="margin-top:0.75rem;justify-content:center;">
+          Cancel
+        </a>
+      </form>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // Live preview
+    const emojiMap = { vegetables: '🥬', fruits: '🍎', grains: '🌾', herbs: '🌿' };
+    function updatePreview() {
+      const name = document.getElementById('productName').value;
+      const cat = document.getElementById('productCategory').value;
+      const price = document.getElementById('productPrice').value;
+      const unit = document.getElementById('productUnit').value;
+      const card = document.getElementById('previewCard');
+      if (name || cat || price) {
+        card.style.display = 'block';
+        document.getElementById('previewEmoji').textContent = emojiMap[cat] || '📦';
+        document.getElementById('previewName').textContent = name || '—';
+        document.getElementById('previewPrice').textContent = price ? `₱${price}${unit ? '/' + unit : ''}` : '—';
+      } else {
+        card.style.display = 'none';
+      }
+    }
+    ['productName', 'productCategory', 'productPrice', 'productUnit'].forEach(id => {
+      document.getElementById(id)?.addEventListener('input', updatePreview);
+      document.getElementById(id)?.addEventListener('change', updatePreview);
+    });
+  </script>
+</body>
+
+</html>

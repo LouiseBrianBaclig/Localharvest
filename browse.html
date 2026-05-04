@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Products – LocalHarvest</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="browse">
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand"><a href="index.html"><span class="brand-icon">🌾</span><span
+            class="brand-name">LocalHarvest</span></a></div>
+      <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="browse.html" style="color:var(--green-dark);font-weight:700;">Browse</a></li>
+        <li><a href="register.html" class="nav-btn btn-outline">Register</a></li>
+        <li><a href="login.html" class="nav-btn btn-filled">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="browse-page">
+    <!-- Hero / Search Bar -->
+    <div class="browse-hero">
+      <h1>🛒 Fresh From Local Farms</h1>
+      <p>Browse produce from farmers near you</p>
+      <div class="location-bar">
+        <input type="text" id="locationInput" class="form-control" placeholder="📍 Enter your location..."
+          value="Davao City">
+        <button id="locationSearchBtn" class="btn btn-primary" style="border-radius:0 50px 50px 0;">Search</button>
+      </div>
+    </div>
+
+    <div class="browse-body">
+      <!-- Search + filter row -->
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-bottom:1.5rem;">
+        <div style="flex:1;min-width:200px;position:relative;">
+          <i class="fas fa-search"
+            style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--text-light);font-size:0.9rem;"></i>
+          <input type="text" id="searchInput" class="form-control" placeholder="Search products or farmers..."
+            style="padding-left:2.5rem;">
+        </div>
+        <select id="sortSelect" class="form-control" style="max-width:200px;">
+          <option value="distance">Sort: Nearest First</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name">Name: A–Z</option>
+        </select>
+      </div>
+
+      <!-- Category filter -->
+      <div class="category-filter" style="justify-content:flex-start;margin-bottom:1.5rem;">
+        <button class="cat-btn active" data-cat="all"><span>🛒</span> All</button>
+        <button class="cat-btn" data-cat="vegetables"><span>🥬</span> Vegetables</button>
+        <button class="cat-btn" data-cat="fruits"><span>🍎</span> Fruits</button>
+        <button class="cat-btn" data-cat="grains"><span>🌾</span> Grains</button>
+        <button class="cat-btn" data-cat="herbs"><span>🌿</span> Herbs</button>
+      </div>
+
+      <!-- Results count -->
+      <p id="resultsCount" style="font-size:0.88rem;color:var(--text-light);margin-bottom:1rem;"></p>
+
+      <!-- Products grid -->
+      <div class="products-grid" id="browseGrid"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2025 LocalHarvest · HCI 102 Final Project</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // Extended browse: sort + results count
+    const origInitBrowse = initBrowse;
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('sortSelect')?.addEventListener('change', () => {
+        const event = new Event('input');
+        document.getElementById('searchInput')?.dispatchEvent(event);
+      });
+    });
+
+    // Patch renderBrowse to include sort + count
+    const _origInit = window.initBrowse;
+    window.initBrowse = function () {
+      const grid = document.getElementById('browseGrid');
+      if (!grid) return;
+      let activeCat = 'all';
+
+      function renderBrowse() {
+        const search = document.getElementById('searchInput')?.value?.toLowerCase() || '';
+        const sort = document.getElementById('sortSelect')?.value || 'distance';
+        let items = activeCat === 'all' ? [...PRODUCTS] : PRODUCTS.filter(p => p.category === activeCat);
+        if (search) items = items.filter(p => p.name.toLowerCase().includes(search) || p.farmer.toLowerCase().includes(search) || p.location.toLowerCase().includes(search));
+        if (sort === 'price-asc') items.sort((a, b) => a.price - b.price);
+        else if (sort === 'price-desc') items.sort((a, b) => b.price - a.price);
+        else if (sort === 'name') items.sort((a, b) => a.name.localeCompare(b.name));
+        else items.sort((a, b) => a.distance - b.distance);
+
+        const countEl = document.getElementById('resultsCount');
+        if (countEl) countEl.textContent = `Showing ${items.length} product${items.length !== 1 ? 's' : ''}`;
+
+        if (items.length === 0) {
+          grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><span class="empty-icon">🔍</span><h3>No products found</h3><p>Try a different search or category.</p></div>`;
+          return;
+        }
+        grid.innerHTML = items.map(p => productCardHTML(p)).join('');
+        grid.querySelectorAll('.product-card').forEach(card => {
+          card.addEventListener('click', () => window.location.href = `product-detail.html?id=${card.dataset.id}`);
+        });
+      }
+
+      renderBrowse();
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeCat = btn.dataset.cat;
+          renderBrowse();
+        });
+      });
+      document.getElementById('searchInput')?.addEventListener('input', renderBrowse);
+      document.getElementById('sortSelect')?.addEventListener('change', renderBrowse);
+      document.getElementById('locationSearchBtn')?.addEventListener('click', () => {
+        showToast('📍 Showing products nearest to your location!');
+        renderBrowse();
+      });
+    }
+  </script>
+</body>
+
+</html>

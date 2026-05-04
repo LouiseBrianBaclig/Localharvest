@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail – LocalHarvest</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="product-detail">
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand"><a href="index.html"><span class="brand-icon">🌾</span><span
+            class="brand-name">LocalHarvest</span></a></div>
+      <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="browse.html">← Back to Browse</a></li>
+        <li><a href="login.html" class="nav-btn btn-filled">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="detail-page">
+    <div class="detail-card">
+      <!-- Product image -->
+      <div class="detail-img">
+        <span id="detailEmoji" style="line-height:1;">🌽</span>
+      </div>
+
+      <div class="detail-body">
+        <span class="detail-category" id="detailCategory">vegetables</span>
+        <h1 class="detail-name" id="detailName">Product Name</h1>
+        <div class="detail-price" id="detailPrice">₱0/kg</div>
+
+        <!-- Farmer info -->
+        <div class="detail-farmer">
+          <div class="farmer-avatar"><span id="farmerAvatarIcon">👨‍🌾</span></div>
+          <div class="farmer-info">
+            <strong id="farmerName">Farmer Name</strong>
+            <span><i class="fas fa-map-marker-alt" style="color:var(--green-light);margin-right:0.3rem;"></i><span
+                id="farmerLocation">Location</span></span>
+          </div>
+          <div
+            style="margin-left:auto;background:var(--green-pale);color:var(--green-dark);padding:0.3rem 0.8rem;border-radius:20px;font-size:0.8rem;font-weight:600;"
+            id="detailQtyAvail">In stock</div>
+        </div>
+
+        <!-- Quantity selector -->
+        <div class="qty-selector">
+          <label>Quantity:</label>
+          <div class="qty-controls">
+            <button class="qty-btn" id="qtyMinus"><i class="fas fa-minus"></i></button>
+            <span class="qty-num" id="qtyNum">1</span>
+            <button class="qty-btn" id="qtyPlus"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <!-- Total -->
+        <div
+          style="background:var(--cream);border-radius:var(--radius-sm);padding:1rem;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-weight:600;color:var(--green-dark);">Order Total</span>
+          <span id="orderTotal"
+            style="font-family:'Raleway',sans-serif;font-size:1.3rem;font-weight:800;color:var(--accent-dark);">₱0</span>
+        </div>
+
+        <!-- CTA -->
+        <button id="orderBtn" class="btn btn-primary btn-block"
+          style="font-size:1.1rem;padding:1.1rem;border-radius:var(--radius-sm);">
+          <i class="fas fa-shopping-basket"></i> Order Now
+        </button>
+        <a href="browse.html" class="btn btn-secondary btn-block" style="margin-top:0.75rem;justify-content:center;">
+          <i class="fas fa-arrow-left"></i> Continue Browsing
+        </a>
+
+        <!-- Note -->
+        <p style="text-align:center;font-size:0.8rem;color:var(--text-light);margin-top:1rem;">
+          <i class="fas fa-info-circle"></i> After ordering, you will arrange pickup directly with the farmer.
+        </p>
+      </div>
+    </div>
+
+    <!-- More products -->
+    <div style="max-width:800px;margin:2rem auto 0;">
+      <h2
+        style="font-family:'Raleway',sans-serif;font-size:1.2rem;font-weight:700;color:var(--green-dark);margin-bottom:1rem;">
+        More From Local Farms</h2>
+      <div class="products-grid" id="moreGrid"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2025 LocalHarvest · HCI 102 Final Project</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // Update total when qty changes
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get('id'));
+      const product = PRODUCTS.find(p => p.id === id);
+      if (!product) return;
+
+      let qty = 1;
+      function updateTotal() {
+        document.getElementById('orderTotal').textContent = `₱${product.price * qty}`;
+        document.getElementById('qtyNum').textContent = qty;
+      }
+      document.getElementById('qtyMinus')?.addEventListener('click', () => { if (qty > 1) { qty--; updateTotal(); } });
+      document.getElementById('qtyPlus')?.addEventListener('click', () => { if (qty < product.quantity) { qty++; updateTotal(); } });
+      updateTotal();
+
+      // More products
+      const moreGrid = document.getElementById('moreGrid');
+      if (moreGrid) {
+        const more = PRODUCTS.filter(p => p.id !== id && p.category === product.category).slice(0, 4);
+        moreGrid.innerHTML = more.map(p => productCardHTML(p)).join('');
+        moreGrid.querySelectorAll('.product-card').forEach(card => {
+          card.addEventListener('click', () => window.location.href = `product-detail.html?id=${card.dataset.id}`);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

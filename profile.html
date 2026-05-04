@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile – LocalHarvest</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="profile">
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand"><a href="index.html"><span class="brand-icon">🌾</span><span
+            class="brand-name">LocalHarvest</span></a></div>
+      <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="browse.html">Browse</a></li>
+        <li><button id="logoutBtn" class="nav-btn btn-outline" style="background:none;cursor:pointer;">Logout</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="profile-page">
+    <div class="profile-card">
+      <!-- Profile header -->
+      <div class="profile-header-card">
+        <div class="profile-avatar">
+          <span id="profileAvatarInitial"
+            style="font-family:'Raleway',sans-serif;font-weight:800;font-size:2rem;color:var(--white);">M</span>
+        </div>
+        <div class="profile-name" id="profileName">Loading...</div>
+        <div class="profile-role" id="profileRole">Buyer</div>
+      </div>
+
+      <!-- Info card -->
+      <div class="profile-info-card">
+        <h3
+          style="font-family:'Raleway',sans-serif;font-size:1rem;font-weight:700;color:var(--green-dark);margin-bottom:1rem;">
+          Account Information</h3>
+
+        <div class="info-row">
+          <span class="info-label"><i class="fas fa-user" style="margin-right:0.4rem;color:var(--green-light);"></i>Full
+            Name</span>
+          <span class="info-value" id="infoName">—</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label"><i class="fas fa-envelope"
+              style="margin-right:0.4rem;color:var(--green-light);"></i>Email</span>
+          <span class="info-value" id="infoEmail">—</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label"><i class="fas fa-map-marker-alt"
+              style="margin-right:0.4rem;color:var(--green-light);"></i>Location</span>
+          <span class="info-value" id="infoLocation">—</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label"><i class="fas fa-phone"
+              style="margin-right:0.4rem;color:var(--green-light);"></i>Phone</span>
+          <span class="info-value" id="infoPhone">—</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label"><i class="fas fa-id-badge"
+              style="margin-right:0.4rem;color:var(--green-light);"></i>Account Type</span>
+          <span class="info-value" id="infoRole">—</span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:1.25rem;">
+        <button onclick="editProfile()" class="btn btn-secondary" style="justify-content:center;">
+          <i class="fas fa-pen"></i> Edit Profile
+        </button>
+        <a id="dashLink" href="browse.html" class="btn btn-green" style="justify-content:center;">
+          <i class="fas fa-th-large"></i> Go to Dashboard
+        </a>
+        <button id="logoutBtn2" onclick="logout()" class="btn"
+          style="justify-content:center;background:#ffe4e4;color:#c0392b;">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    function editProfile() {
+      const newName = prompt('Enter your new name:', currentUser?.name);
+      if (newName && newName.trim()) {
+        currentUser.name = newName.trim();
+        setCurrentUser(currentUser);
+        document.getElementById('profileName').textContent = currentUser.name;
+        document.getElementById('infoName').textContent = currentUser.name;
+        document.getElementById('profileAvatarInitial').textContent = currentUser.name[0].toUpperCase();
+        showToast('✅ Profile updated!');
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const dashLink = document.getElementById('dashLink');
+      if (dashLink && currentUser?.role === 'farmer') dashLink.href = 'farmer-dashboard.html';
+      document.getElementById('logoutBtn2')?.addEventListener('click', logout);
+    });
+  </script>
+</body>
+
+</html>

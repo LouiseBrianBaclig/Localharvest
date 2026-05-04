@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register – LocalHarvest</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="register">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand"><a href="index.html"><span class="brand-icon">🌾</span><span
+            class="brand-name">LocalHarvest</span></a></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">← Back to Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-header">
+        <span class="brand-icon">🌾</span>
+        <h1>Create Account</h1>
+        <p>Join LocalHarvest and connect with your community</p>
+      </div>
+
+      <p
+        style="font-family:'Raleway',sans-serif;font-weight:700;font-size:0.9rem;color:var(--green-dark);margin-bottom:0.75rem;">
+        I am a:</p>
+      <div class="role-selector">
+        <button class="role-btn" data-role="farmer">
+          <span class="role-icon">🌾</span>
+          <span class="role-label">Farmer</span>
+          <span class="role-desc">I want to sell my produce</span>
+        </button>
+        <button class="role-btn active" data-role="buyer">
+          <span class="role-icon">🛒</span>
+          <span class="role-label">Buyer</span>
+          <span class="role-desc">I want to buy fresh food</span>
+        </button>
+      </div>
+
+      <form id="registerForm" novalidate>
+        <div class="form-group">
+          <label for="regName">Full Name</label>
+          <input type="text" id="regName" class="form-control" placeholder="e.g. Maria Santos" autocomplete="name">
+          <div class="form-error" id="regNameError">This field is required.</div>
+        </div>
+        <div class="form-group">
+          <label for="regEmail">Email Address</label>
+          <input type="email" id="regEmail" class="form-control" placeholder="you@email.com" autocomplete="email">
+          <div class="form-error" id="regEmailError">Please enter a valid email.</div>
+        </div>
+        <div class="form-group">
+          <label for="regLocation">Your Location / Barangay</label>
+          <input type="text" id="regLocation" class="form-control" placeholder="e.g. Toril, Davao City">
+          <div class="form-error" id="regLocationError">This field is required.</div>
+        </div>
+        <div class="form-group">
+          <label for="regPhone">Phone Number</label>
+          <input type="tel" id="regPhone" class="form-control" placeholder="09XXXXXXXXX" autocomplete="tel">
+          <div class="form-error" id="regPhoneError">This field is required.</div>
+        </div>
+        <div class="form-group">
+          <label for="regPass">Password</label>
+          <input type="password" id="regPass" class="form-control" placeholder="Create a password"
+            autocomplete="new-password">
+          <div class="form-error" id="regPassError">This field is required.</div>
+        </div>
+        <button type="submit" class="btn btn-green btn-block" style="margin-top:0.5rem;">
+          <i class="fas fa-seedling"></i> Create Account
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Already have an account? <a href="login.html">Login here</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

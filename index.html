@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalHarvest – Fresh From Local Farms</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="brand-icon">🌾</span>
+        <span class="brand-name">LocalHarvest</span>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#browse">Browse</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="register.html" class="nav-btn btn-outline">Register</a></li>
+        <li><a href="login.html" class="nav-btn btn-filled">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>🌿 Supporting Local Agriculture</span>
+      </div>
+      <h1>Fresh From <span class="highlight">Local Farms</span><br>Straight To You</h1>
+      <p class="hero-sub">Connect directly with small farmers near you. No middlemen. Just fresh, honest food.</p>
+      <div class="hero-btns">
+        <a href="browse.html" class="btn btn-primary">
+          <i class="fas fa-shopping-basket"></i> Start Shopping
+        </a>
+        <a href="register.html?role=farmer" class="btn btn-secondary">
+          <i class="fas fa-seedling"></i> I'm a Farmer
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">120+</span><span class="stat-label">Local Farmers</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">850+</span><span class="stat-label">Fresh Products</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">5 km</span><span class="stat-label">Average Distance</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="product-preview-card card-back">
+          <div class="ppc-img" style="background:#d8f3dc;"><span style="font-size:3rem;">🍅</span></div>
+          <div class="ppc-info"><strong>Tomatoes</strong><span>₱45/kg</span></div>
+        </div>
+        <div class="product-preview-card card-mid">
+          <div class="ppc-img" style="background:#fff3e0;"><span style="font-size:3rem;">🥬</span></div>
+          <div class="ppc-info"><strong>Pechay</strong><span>₱30/bundle</span></div>
+        </div>
+        <div class="product-preview-card card-front">
+          <div class="ppc-img" style="background:#e8f5e9;"><span style="font-size:3rem;">🌽</span></div>
+          <div class="ppc-info">
+            <strong>Sweet Corn</strong><span>₱25/piece</span>
+            <div class="ppc-farmer"><i class="fas fa-map-marker-alt"></i> 1.2 km away</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>Simple For Everyone</h2>
+        <p>Designed for people of all tech backgrounds</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-column">
+          <div class="role-badge farmer-badge"><i class="fas fa-tractor"></i> For Farmers</div>
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text"><strong>Register</strong>
+              <p>Sign up in 3 easy steps. Just your name, location, and phone number.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text"><strong>List Your Produce</strong>
+              <p>Add a photo, set a price, and enter your quantity. That's it.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>Receive Orders</strong>
+              <p>Get notified when someone nearby wants to buy your harvest.</p>
+            </div>
+          </div>
+        </div>
+        <div class="steps-divider">
+          <div class="divider-line"></div>
+          <div class="divider-icon"></div>
+          <div class="divider-line"></div>
+        </div>
+        <div class="step-column">
+          <div class="role-badge buyer-badge"><i class="fas fa-shopping-bag"></i> For Buyers</div>
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text"><strong>Browse Near You</strong>
+              <p>See what's available from farms in your area right now.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text"><strong>Pick Your Produce</strong>
+              <p>Choose products by category or just scroll the fresh listings.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>Order &amp; Confirm</strong>
+              <p>Place your order in one tap. Arrange pickup directly with the farmer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BROWSE PREVIEW -->
+  <section class="browse-preview" id="browse">
+    <div class="container">
+      <div class="section-header">
+        <h2>Fresh Near You</h2>
+        <p>From local farms to your table</p>
+      </div>
+      <div class="category-filter">
+        <button class="cat-btn active" data-cat="all"><span>🛒</span> All</button>
+        <button class="cat-btn" data-cat="vegetables"><span>🥬</span> Vegetables</button>
+        <button class="cat-btn" data-cat="fruits"><span>🍎</span> Fruits</button>
+        <button class="cat-btn" data-cat="grains"><span>🌾</span> Grains</button>
+        <button class="cat-btn" data-cat="herbs"><span>🌿</span> Herbs</button>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+      <div class="browse-cta">
+        <a href="browse.html" class="btn btn-primary">See All Products <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FARMER CTA -->
+  <section class="farmer-cta">
+    <div class="container">
+      <div class="cta-content">
+        <div class="cta-text">
+          <h2>Are You a Local Farmer?</h2>
+          <p>Join hundreds of farmers already selling directly to buyers near them. No commissions. No middlemen. Fair
+            prices for your hard work.</p>
+          <a href="register.html?role=farmer" class="btn btn-light">Start Selling Today <i
+              class="fas fa-seedling"></i></a>
+        </div>
+        <div class="cta-visual">
+          <div class="cta-icons">
+            <div class="cta-icon-item"><span>🌱</span>
+              <p>List Your Produce</p>
+            </div>
+            <div class="cta-icon-item"><span>💰</span>
+              <p>Get Fair Prices</p>
+            </div>
+            <div class="cta-icon-item"><span>🤝</span>
+              <p>Connect Directly</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand-icon">🌾</span>
+          <span class="brand-name">LocalHarvest</span>
+          <p>Connecting communities through fresh, local food.</p>
+        </div>
+        <div class="footer-links">
+          <a href="browse.html">Browse Products</a>
+          <a href="register.html">Register</a>
+          <a href="login.html">Login</a>
+          <a href="#how-it-works">How It Works</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 LocalHarvest · HCI 102 Final Project · All visible functions are working</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
