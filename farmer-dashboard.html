@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Farmer Dashboard – LocalHarvest</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body data-page="farmer-dashboard">
 
   <nav class="navbar">
@@ -21,84 +17,133 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="farmer-dashboard.html" style="color:var(--green-dark);font-weight:700;">Dashboard</a></li>
         <li><a href="profile.html">My Profile</a></li>
-        <li><button id="logoutBtn" class="nav-btn btn-outline" style="background:none;cursor:pointer;">Logout</button>
-        </li>
+        <li><button id="logoutBtn" class="nav-btn btn-outline" style="background:none;cursor:pointer;">Logout</button></li>
       </ul>
     </div>
   </nav>
 
   <div class="dashboard-page">
-    <!-- Header -->
     <div class="dashboard-header">
       <div class="dashboard-header-inner">
         <div class="dashboard-welcome">
           <h1>Good day, <span id="farmerName">Farmer</span>! 🌾</h1>
           <p>Here's a summary of your LocalHarvest activity</p>
         </div>
-        <a href="add-product.html" class="btn btn-primary">
-          <i class="fas fa-plus"></i> Add Product
-        </a>
+        <a href="add-product.html" class="btn btn-primary"><i class="fas fa-plus"></i> Add Product</a>
       </div>
     </div>
 
     <div class="dashboard-body">
-      <!-- Stats -->
       <div class="dashboard-stats">
-        <div class="dash-stat">
-          <div class="dash-stat-num" id="productCount">0</div>
-          <div class="dash-stat-label">Listed Products</div>
-        </div>
-        <div class="dash-stat">
-          <div class="dash-stat-num" id="orderCount">0</div>
-          <div class="dash-stat-label">Orders Received</div>
-        </div>
-        <div class="dash-stat">
-          <div class="dash-stat-num" id="viewCount">0</div>
-          <div class="dash-stat-label">Total Views</div>
-        </div>
-        <div class="dash-stat">
-          <div class="dash-stat-num" style="color:var(--accent-dark);">Active</div>
-          <div class="dash-stat-label">Account Status</div>
-        </div>
+        <div class="dash-stat"><div class="dash-stat-num" id="productCount">0</div><div class="dash-stat-label">Listed Products</div></div>
+        <div class="dash-stat"><div class="dash-stat-num" id="orderCount">0</div><div class="dash-stat-label">Orders Received</div></div>
+        <div class="dash-stat"><div class="dash-stat-num" id="viewCount">0</div><div class="dash-stat-label">Total Views</div></div>
+        <div class="dash-stat"><div class="dash-stat-num" style="color:var(--accent-dark);">Active</div><div class="dash-stat-label">Account Status</div></div>
       </div>
 
-      <!-- Quick actions -->
       <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;">
         <a href="add-product.html" class="btn btn-green"><i class="fas fa-seedling"></i> List New Produce</a>
         <a href="browse.html" class="btn btn-secondary"><i class="fas fa-eye"></i> View as Buyer</a>
         <a href="profile.html" class="btn btn-secondary"><i class="fas fa-user"></i> My Profile</a>
       </div>
 
-      <!-- Products -->
       <div class="section-title-row">
         <h2>My Listed Products</h2>
-        <a href="add-product.html" class="btn btn-primary" style="padding:0.5rem 1.2rem;font-size:0.9rem;"><i
-            class="fas fa-plus"></i> Add New</a>
+        <a href="add-product.html" class="btn btn-primary" style="padding:0.5rem 1.2rem;font-size:0.9rem;"><i class="fas fa-plus"></i> Add New</a>
       </div>
       <div class="manage-grid" id="manageGrid">
         <div style="text-align:center;padding:2rem;color:var(--text-light);">Loading...</div>
       </div>
 
-      <!-- Tips -->
       <div style="background:var(--green-pale);border-radius:var(--radius);padding:1.5rem;margin-top:2rem;">
-        <h3 style="font-family:'Raleway',sans-serif;color:var(--green-dark);margin-bottom:0.75rem;font-size:1rem;">💡
-          Tips for Better Sales</h3>
+        <h3 style="font-family:'Raleway',sans-serif;color:var(--green-dark);margin-bottom:0.75rem;font-size:1rem;">💡 Tips for Better Sales</h3>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem;">
-          <div style="font-size:0.85rem;color:var(--text-mid);">📸 <strong>Add clear photos</strong> – Products with
-            photos get 3× more views</div>
-          <div style="font-size:0.85rem;color:var(--text-mid);">💰 <strong>Fair pricing</strong> – Check nearby listings
-            to stay competitive</div>
-          <div style="font-size:0.85rem;color:var(--text-mid);">🔄 <strong>Update stock</strong> – Keep quantities
-            accurate to avoid overselling</div>
-          <div style="font-size:0.85rem;color:var(--text-mid);">📍 <strong>Exact location</strong> – Buyers prefer
-            farmers they can easily visit</div>
+          <div style="font-size:0.85rem;color:var(--text-mid);">📸 <strong>Add clear photos</strong> – Products with photos get 3× more views</div>
+          <div style="font-size:0.85rem;color:var(--text-mid);">💰 <strong>Fair pricing</strong> – Check nearby listings to stay competitive</div>
+          <div style="font-size:0.85rem;color:var(--text-mid);">🔄 <strong>Update stock</strong> – Keep quantities accurate to avoid overselling</div>
+          <div style="font-size:0.85rem;color:var(--text-mid);">📍 <strong>Exact location</strong> – Buyers prefer farmers they can easily visit</div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ══ EDIT PRODUCT MODAL ══ -->
+  <div class="modal-overlay" id="editProductModal">
+    <div class="modal" style="max-width:560px;">
+      <div class="modal-header">
+        <h2><i class="fas fa-pen" style="margin-right:0.5rem;color:var(--green-light);"></i>Edit Product</h2>
+        <button class="modal-close" id="closeEditProductModal"><i class="fas fa-times"></i></button>
+      </div>
+      <div style="text-align:center;margin-bottom:1.25rem;">
+        <div id="editPreviewEmoji" style="font-size:3.5rem;width:80px;height:80px;background:var(--green-pale);border-radius:var(--radius);margin:0 auto;display:flex;align-items:center;justify-content:center;">📦</div>
+      </div>
+      <input type="hidden" id="editProductIdx">
+      <form id="editProductForm" novalidate>
+        <div class="form-group">
+          <label for="editProductName">Product Name <span style="color:#e74c3c;">*</span></label>
+          <input type="text" id="editProductName" class="form-control" placeholder="e.g. Fresh Tomatoes">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div class="form-group">
+            <label for="editProductCategory">Category <span style="color:#e74c3c;">*</span></label>
+            <select id="editProductCategory" class="form-control">
+              <option value="">Select category</option>
+              <option value="vegetables">🥬 Vegetables</option>
+              <option value="fruits">🍎 Fruits</option>
+              <option value="grains">🌾 Grains</option>
+              <option value="herbs">🌿 Herbs</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="editProductUnit">Unit <span style="color:#e74c3c;">*</span></label>
+            <select id="editProductUnit" class="form-control">
+              <option value="">Select unit</option>
+              <option value="kg">kg</option>
+              <option value="bundle">bundle</option>
+              <option value="piece">piece</option>
+              <option value="tray">tray</option>
+              <option value="sack">sack</option>
+              <option value="liter">liter</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div class="form-group">
+            <label for="editProductPrice">Price (₱) <span style="color:#e74c3c;">*</span></label>
+            <input type="number" id="editProductPrice" class="form-control" placeholder="e.g. 45" min="1">
+          </div>
+          <div class="form-group">
+            <label for="editProductQty">Available Quantity <span style="color:#e74c3c;">*</span></label>
+            <input type="number" id="editProductQty" class="form-control" placeholder="e.g. 50" min="1">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="editProductDesc">Description</label>
+          <textarea id="editProductDesc" class="form-control" rows="2" placeholder="Optional product description" style="resize:vertical;"></textarea>
+        </div>
+        <div style="display:flex;gap:0.75rem;margin-top:0.5rem;">
+          <button type="submit" class="btn btn-green" style="flex:1;justify-content:center;"><i class="fas fa-check"></i> Save Changes</button>
+          <button type="button" id="cancelEditProduct" class="btn btn-secondary" style="flex:1;justify-content:center;">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ══ CONFIRM MODAL ══ -->
+  <div class="modal-overlay" id="confirmModal">
+    <div class="modal" style="max-width:400px;text-align:center;">
+      <div class="modal-header" style="justify-content:center;flex-direction:column;gap:0.5rem;">
+        <button class="modal-close" id="closeConfirmModal" style="position:absolute;top:1.25rem;right:1.5rem;"><i class="fas fa-times"></i></button>
+        <span style="font-size:2.5rem;">⚠️</span>
+        <h2 id="confirmModalTitle" style="font-size:1.1rem;">Are you sure?</h2>
+      </div>
+      <p id="confirmModalMessage" style="color:var(--text-light);font-size:0.9rem;margin-bottom:1.25rem;"></p>
+      <button id="confirmModalAction" class="btn btn-green btn-block" style="justify-content:center;">Confirm</button>
+      <button id="cancelConfirmModal" class="btn btn-secondary btn-block" style="margin-top:0.5rem;justify-content:center;">Cancel</button>
     </div>
   </div>
 
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>
-
 </html>
