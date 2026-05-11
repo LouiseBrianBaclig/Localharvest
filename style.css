@@ -1588,3 +1588,31 @@ button {
     grid-template-columns: 1fr 1fr;
   }
 }
+/* ============================================================ MODAL POSITION FIX */
+.modal {
+  position: relative;
+}
+
+/* ============================================================ MANAGE CARD – EDIT LINK */
+.manage-card-actions .btn-edit-full {
+  padding: 0.4rem 0.9rem;
+  background: #e8f5e9;
+  color: var(--green-dark);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all var(--transition);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.manage-card-actions .btn-edit-full:hover {
+  background: var(--green-light);
+  color: var(--white);
+}
+
+/* ============================================================ ORDER CONFIRM ACTIONS */
+.confirm-btns .btn + .btn {
+  margin-top: 0;
+}
