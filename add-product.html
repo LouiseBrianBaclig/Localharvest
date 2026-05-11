@@ -125,6 +125,18 @@
     </div>
   </div>
 
+  <!-- ══ CONFIRM MODAL ══ -->
+  <div class="modal-overlay" id="confirmModal">
+    <div class="modal" style="max-width:400px;text-align:center;position:relative;">
+      <button class="modal-close" id="closeConfirmModal" style="position:absolute;top:1.25rem;right:1.5rem;"><i class="fas fa-times"></i></button>
+      <span style="font-size:2.5rem;display:block;margin-bottom:0.75rem;">⚠️</span>
+      <h2 id="confirmModalTitle" style="font-family:'Raleway',sans-serif;font-size:1.1rem;color:var(--green-dark);margin-bottom:0.5rem;">Are you sure?</h2>
+      <p id="confirmModalMessage" style="color:var(--text-light);font-size:0.9rem;margin-bottom:1.25rem;"></p>
+      <button id="confirmModalAction" class="btn btn-green btn-block" style="justify-content:center;">Confirm</button>
+      <button id="cancelConfirmModal" class="btn btn-secondary btn-block" style="margin-top:0.5rem;justify-content:center;">Cancel</button>
+    </div>
+  </div>
+
   <script src="data.js"></script>
   <script src="app.js"></script>
   <script>
