@@ -14,11 +14,11 @@
 
 <body data-page="product-detail">
 
-  <nav class="navbar">
+  <nav class="navbar" id="navbar">
     <div class="nav-container">
       <div class="nav-brand"><a href="index.html"><span class="brand-icon">🌾</span><span
             class="brand-name">LocalHarvest</span></a></div>
-      <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
       <ul class="nav-links" id="navLinks">
         <li><a href="browse.html">← Back to Browse</a></li>
         <li><a href="login.html" class="nav-btn btn-filled">Login</a></li>
@@ -43,8 +43,8 @@
           <div class="farmer-avatar"><span id="farmerAvatarIcon">👨‍🌾</span></div>
           <div class="farmer-info">
             <strong id="farmerName">Farmer Name</strong>
-            <span><i class="fas fa-map-marker-alt" style="color:var(--green-light);margin-right:0.3rem;"></i><span
-                id="farmerLocation">Location</span></span>
+            <span><i class="fas fa-map-marker-alt" style="color:var(--green-light);margin-right:0.3rem;"></i><span id="farmerLocation">Location</span></span>
+            <span id="farmerPhoneRow" style="display:none;"><i class="fas fa-phone" style="color:var(--green-light);margin-right:0.3rem;font-size:0.8rem;"></i><a id="farmerPhone" href="#" style="color:var(--green-dark);font-weight:600;text-decoration:none;font-size:0.875rem;">—</a></span>
           </div>
           <div
             style="margin-left:auto;background:var(--green-pale);color:var(--green-dark);padding:0.3rem 0.8rem;border-radius:20px;font-size:0.8rem;font-weight:600;"
