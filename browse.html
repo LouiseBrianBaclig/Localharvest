@@ -14,16 +14,16 @@
 
 <body data-page="browse">
 
-  <nav class="navbar">
+  <nav class="navbar" id="navbar">
     <div class="nav-container">
       <div class="nav-brand"><a href="index.html"><span class="brand-icon">🌾</span><span
             class="brand-name">LocalHarvest</span></a></div>
-      <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
-        <li><a href="browse.html" style="color:var(--green-dark);font-weight:700;">Browse</a></li>
-        <li><a href="register.html" class="nav-btn btn-outline">Register</a></li>
-        <li><a href="login.html" class="nav-btn btn-filled">Login</a></li>
+        <li class="nav-divider"></li>
+        <li><a href="register.html" class="nav-btn btn-outline" id="navRegisterBtn">Register</a></li>
+        <li><a href="login.html" class="nav-btn btn-filled" id="navLoginBtn">Login</a></li>
       </ul>
     </div>
   </nav>
@@ -62,8 +62,13 @@
         <button class="cat-btn active" data-cat="all"><span>🛒</span> All</button>
         <button class="cat-btn" data-cat="vegetables"><span>🥬</span> Vegetables</button>
         <button class="cat-btn" data-cat="fruits"><span>🍎</span> Fruits</button>
-        <button class="cat-btn" data-cat="grains"><span>🌾</span> Grains</button>
-        <button class="cat-btn" data-cat="herbs"><span>🌿</span> Herbs</button>
+        <button class="cat-btn" data-cat="grains"><span>🌾</span> Grains &amp; Legumes</button>
+        <button class="cat-btn" data-cat="herbs"><span>🌿</span> Herbs &amp; Spices</button>
+        <button class="cat-btn" data-cat="coconut"><span>🥥</span> Coconut &amp; Copra</button>
+        <button class="cat-btn" data-cat="cacao"><span>🍫</span> Cacao &amp; Cocoa</button>
+        <button class="cat-btn" data-cat="meat"><span>🥩</span> Meat &amp; Poultry</button>
+        <button class="cat-btn" data-cat="seafood"><span>🐟</span> Seafood</button>
+        <button class="cat-btn" data-cat="dairy"><span>🥛</span> Dairy &amp; Processed</button>
       </div>
 
       <!-- Results count -->
